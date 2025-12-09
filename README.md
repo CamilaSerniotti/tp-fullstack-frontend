@@ -85,8 +85,8 @@ DELETE /tasks/:id
 
 🔽 1. Clonar el repositorio
 
-git clone https://github.com/tu-usuario/tp-fullstack-frontend.git
-git clone https://github.com/tu-usuario/tp-fullstack-backend.git
+git clone https://github.com/CamilaSerniotti/tp-fullstack-frontend.git
+
 
 ⚙️ 2. Instalación del Frontend
 
