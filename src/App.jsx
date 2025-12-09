@@ -21,7 +21,7 @@ export default function App() {
       });
       const data = await res.json();
       if (data.token) {
-        setToken(data.token);
+        setToken(data.token); // Esto hace que React muestre el panel de tareas
         setLoginError(false);
       } else {
         setLoginError(true);
@@ -42,6 +42,7 @@ export default function App() {
 
   // AGREGAR TAREA
   async function add() {
+    if (!title.trim()) return; // Evita tareas vacías
     const res = await fetch('http://localhost:4000/tasks', {
       method: 'POST',
       headers: {
@@ -108,13 +109,14 @@ export default function App() {
               Login
             </button>
           </form>
+          {loginError && <p style={{color: '#ff4b4b', textAlign: 'center', marginTop: '10px'}}>Email o contraseña incorrectos</p>}
           <div className="links">
             <a href="#">¿Olvidaste tu contraseña?</a>
           </div>
         </div>
       )}
 
-      {/* === LISTA DE TAREAS === */}
+      {/* === PANEL DE TAREAS === */}
       {token && (
         <div className="app-wrapper">
           <h1 className="title">Mis Tareas</h1>
