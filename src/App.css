@@ -7,7 +7,7 @@
 }
 
 body {
-    background: #0a0a0d;
+    background: linear-gradient(135deg, #6e8efb, #a777e3); /* Nuevo fondo degradado */
     color: #f2f2f2;
     display: flex;
     justify-content: center;
@@ -18,120 +18,103 @@ body {
 
 /* === ANIMACIONES === */
 @keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-
-    60% {
-        transform: translateX(-5px);
-    }
-
-    80% {
-        transform: translateX(2px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    0% { opacity: 0; transform: translateX(50px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(2px); }
+    100% { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    100% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.8); }
 }
 
 @keyframes ripple {
-    0% {
-        transform: scale(0);
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: scale(4);
-        opacity: 0;
-    }
+    0% { transform: scale(0); opacity: 0.5; }
+    100% { transform: scale(4); opacity: 0; }
 }
 
 @keyframes pulse {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 @keyframes bounce {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateY(0);
-    }
-
-    40% {
-        transform: translateY(-6px);
-    }
-
-    60% {
-        transform: translateY(-3px);
-    }
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+    60% { transform: translateY(-3px); }
 }
 
-/* === CONTENEDOR PRINCIPAL === */
-.app-wrapper {
+/* === CONTENEDOR LOGIN GLASS === */
+.login-page {
     width: 100%;
-    max-width: 500px;
-    background: linear-gradient(145deg, #111113, #1e1e22);
-    padding: 45px 35px;
-    border-radius: 22px;
-    box-shadow: 0px 12px 45px rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.15); /* Glassmorphism */
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    color: white;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 20px;
     animation: fadeInUp 0.6s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* === TÍTULO === */
-.title {
+.login-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.login-container h2 {
     text-align: center;
-    font-size: 34px;
-    font-weight: 700;
-    color: #e4e4e7;
-    letter-spacing: 1px;
-    text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 24px;
 }
 
-/* === BOTONES LOGIN Y AGREGAR === */
-.login-btn,
-.task-input button {
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.input-group input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+}
+
+/* Botón login estilo moderno */
+.login-btn {
     position: relative;
     overflow: hidden;
     border: none;
@@ -140,9 +123,6 @@ body {
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-
-.login-btn {
     width: 100%;
     padding: 16px;
     background: linear-gradient(135deg, #6366f1, #4f46e5);
@@ -159,24 +139,7 @@ body {
     animation: bounce 0.4s;
 }
 
-.task-input button {
-    padding: 16px 22px;
-    background: #6366f1;
-    font-size: 16px;
-    box-shadow: 0px 4px 14px rgba(99, 102, 241, 0.4);
-}
-
-.task-input button:hover {
-    transform: scale(1.03);
-    animation: pulse 0.5s;
-}
-
-.task-input button:active {
-    animation: bounce 0.3s;
-}
-
-.login-btn:after,
-.task-input button:after {
+.login-btn:after {
     content: "";
     position: absolute;
     width: 80px;
@@ -190,130 +153,71 @@ body {
     transform: translate(-50%, -50%) scale(0);
 }
 
-.login-btn:active:after,
-.task-input button:active:after {
+.login-btn:active:after {
     animation: ripple 0.6s linear;
 }
 
-/* === INPUT === */
-.task-input input {
-    flex: 1;
-    padding: 16px 18px;
-    background: #1c1c1f;
-    border: 1px solid #27272a;
-    border-radius: 14px;
+/* Links dentro del login */
+.login-container .links {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.login-container .links a {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-container .links a:hover {
+    text-decoration: underline;
     color: #fff;
-    font-size: 15px;
-    transition: all 0.3s ease;
-}
-
-.task-input input:focus {
-    border-color: #6366f1;
-    outline: none;
-    box-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
-}
-
-/* === LISTA DE TAREAS === */
-.tasks {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-top: 5px;
-}
-
-.tasks li {
-    background: #161618;
-    padding: 16px 18px;
-    border-radius: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease, transform 0.3s ease;
-}
-
-/* Nueva tarea deslizante desde la derecha */
-.tasks li.new {
-    animation: slideInRight 0.5s ease forwards;
-}
-
-/* Tarea que se elimina */
-.tasks li.removing {
-    animation: fadeOut 0.3s forwards;
-}
-
-/* Hover con gradiente y sombra */
-.tasks li:hover {
-    transform: translateX(5px);
-    background: linear-gradient(90deg, #1c1c1f, #252529);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
-}
-
-/* === BOTÓN ELIMINAR === */
-.delete-btn {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #ff4b4b;
-    font-size: 18px;
-    transition: all 0.2s ease;
-}
-
-.delete-btn:hover {
-    color: #ff1f1f;
-    transform: scale(1.3);
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 500px) {
-    .app-wrapper {
-        padding: 35px 25px;
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+        border-radius: 16px;
     }
 
-    .title {
-        font-size: 30px;
+    .login-container h2 {
+        font-size: 24px;
     }
 
-    .task-input input,
-    .task-input button {
+    .input-group input,
+    .login-btn {
         font-size: 14px;
         padding: 14px;
     }
 }
 
-/* Fade in para inputs y botón al cargar */
-.fade-in-up {
-    animation: fadeInUp 0.6s ease forwards;
+/* === RESTO DE ESTILOS DE LA APP === */
+
+/* CONTENEDOR PRINCIPAL APP */
+.app-wrapper {
+    width: 100%;
+    max-width: 500px;
+    background: linear-gradient(145deg, #111113, #1e1e22);
+    padding: 45px 35px;
+    border-radius: 22px;
+    box-shadow: 0px 12px 45px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    animation: fadeInUp 0.6s ease-out;
 }
 
-/* Shake para login incorrecto */
-@keyframes shake {
-    0% {
-        transform: translateX(0);
-    }
-
-    20% {
-        transform: translateX(-8px);
-    }
-
-    40% {
-        transform: translateX(8px);
-    }
-
-    60% {
-        transform: translateX(-5px);
-    }
-
-    80% {
-        transform: translateX(5px);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
+/* TÍTULO */
+.title {
+    text-align: center;
+    font-size: 34px;
+    font-weight: 700;
+    color: #e4e4e7;
+    letter-spacing: 1px;
+    text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
 }
 
-.shake {
-    animation: shake 0.4s;
-}
+

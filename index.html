@@ -27,15 +27,18 @@
 
     <!-- Accesibilidad -->
     <meta name="author" content="Camila Serniotti" />
-  </head>
 
-  <body style="background:#000; color:white; font-family:'Inter',sans-serif;">
-    <!-- Contenedor principal donde se monta React -->
-    <div id="root" role="main"></div>
+    <!-- Estilos globales para fondo degradado y tipografía -->
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #6e8efb, #a777e3);
+        color: white;
+      }
 
-    <!-- Mensaje si JS está desactivado -->
-    <noscript
-      style="
+      /* Mensaje JS desactivado */
+      noscript {
         display: block;
         text-align: center;
         margin: 20px auto;
@@ -44,9 +47,10 @@
         color: #ffb3b3;
         max-width: 400px;
         border-radius: 8px;
-      "
-    >
-      Para usar esta aplicación, habilite JavaScript en su navegador.
-    </noscript>
-  </body>
-</html>
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Contenedor principal donde se monta React -->
+    <div id="root" role="main">

@@ -75,39 +75,39 @@ export default function App() {
   }, [token]);
 
   return (
-    <div className="app-wrapper">
+    <div className="login-page">
       {/* === LOGIN === */}
       {!token && (
-        <>
-          <h1 className={`title fade-in-up ${loginError ? 'shake' : ''}`}>
-            Iniciar Sesión
-          </h1>
-          <div
-            className={`task-input fade-in-up ${loginError ? 'shake' : ''}`}
-            style={{ flexDirection: 'column', gap: '14px' }}
-          >
+        <div className={`login-container fade-in-up ${loginError ? 'shake' : ''}`}>
+          <h2>Iniciar Sesión</h2>
+          <div className="input-group">
             <input
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder="Email"
             />
+          </div>
+          <div className="input-group">
             <input
               type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}
               placeholder="Contraseña"
             />
-            <button className="login-btn" onClick={login}>
-              Login
-            </button>
           </div>
-        </>
+          <button className="login-btn" onClick={login}>
+            Login
+          </button>
+          <div className="links">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+          </div>
+        </div>
       )}
 
       {/* === LISTA DE TAREAS === */}
       {token && (
-        <>
+        <div className="app-wrapper">
           <h1 className="title">Mis Tareas</h1>
 
           <div className="task-input">
@@ -138,7 +138,7 @@ export default function App() {
               </li>
             ))}
           </ul>
-        </>
+        </div>
       )}
     </div>
   );
